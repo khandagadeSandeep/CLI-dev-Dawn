@@ -1,30 +1,5 @@
 var next_url = $(".products-on-page").data("next-url");
 
-// Add an event listener for filter changes
-$(document).on('change', '.filter-selector', function() {
-  // Update the next_url when filters are changed
-  updateNextUrl();
-  // Check if there's a next_url after filter update
-  checkLoadMoreVisibility();
-});
-
-// Function to update the next_url
-function updateNextUrl() {
-  var new_products_on_page = $(".products-on-page");
-  var new_next_url = new_products_on_page.data("next-url");
-  next_url = new_next_url;
-}
-
-// Function to check and hide the "Load More" button if no more products
-function checkLoadMoreVisibility() {
-  if (!next_url) {
-    // No more products to load, hide the "Load More" button
-    $(".load-more").hide();
-  } else {
-    $(".load-more").show();
-  }
-}
-
 // Your existing code for loading more products
 function loadMoreProducts() {
   if (!next_url) {
@@ -46,4 +21,35 @@ function loadMoreProducts() {
       $(".load-more").hide();
     }
 
-    next_url = new_url
+    next_url = new_url;
+    $(".products-on-page").append(new_products.html());
+  });
+}
+
+// Function to update the next_url
+function updateNextUrl() {
+  var new_products_on_page = $(".products-on-page");
+  var new_next_url = new_products_on_page.data("next-url");
+  next_url = new_next_url;
+  // Check if there's a next_url after filter update
+  checkLoadMoreVisibility();
+}
+
+// Function to check and hide the "Load More" button if no more products
+function checkLoadMoreVisibility() {
+  if (!next_url) {
+    // No more products to load, hide the "Load More" button
+    $(".load-more").hide();
+  } else {
+    $(".load-more").show();
+  }
+}
+
+// Add an event listener for filter changes
+$(document).on('change', '.filter-selector', function() {
+  // Update the next_url when filters are changed
+  updateNextUrl();
+});
+
+// Initial check for "Load More" button visibility
+checkLoadMoreVisibility();
