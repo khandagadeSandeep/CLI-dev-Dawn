@@ -22,6 +22,9 @@
     text-align: center;
     margin: 25px auto;
 }
+  a.load-more_btn.btn.button {
+    cursor: pointer;
+}
 @media (max-width: 1050px) {
   background #fff,
   .Item {
@@ -131,13 +134,9 @@
 
 </ul>
 <div class="load-more">
-  <a class="load-more_btn btn" onclick="loadMoreProducts()">Load More</a>
+  <a class="load-more_btn btn button" onclick="loadMoreProducts()">Load More</a>
   <div class="load-more_spinner"></div>
 </div>
-   {%- if paginate.pages > 1 -%}
-              {% render 'pagination', paginate: paginate, anchor: '' %}
-            {%- endif -%}
-
 {% endpaginate %}
 {% schema %}
 {
