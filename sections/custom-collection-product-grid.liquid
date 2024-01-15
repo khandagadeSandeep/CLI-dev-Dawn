@@ -4,7 +4,7 @@
   <li class="Item">
     <a href="https://www.shore.co.uk/index.php/ripcurl-corp-tee-black.html" class="Item__link">
       <div class="ImageContainer">
-        <img src="{{ product.featured_image }}" class="Image">
+        <img src="{{ product.featured_image | img_url : '300x300' }}" class="Image">
       </div>
       <div class="Item__title">{{ product.title }}</div>
       <div class="Item__price">{{ product.price }}</div>
