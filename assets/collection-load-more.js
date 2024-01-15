@@ -2,9 +2,9 @@ var products_on_page = $(".products-on-page");
 var next_url = products_on_page.data("next-url");
 console.log(next_url);
 
-function loadMoreProducts() {
+function loadMoreProducts(url) {
   $.ajax({
-    url: next_url,
+    url: url,
     type: "GET",
     dataType: "html",
   }).done(function (next_page) {
@@ -14,3 +14,6 @@ function loadMoreProducts() {
     products_on_page.append(new_products.html());
   });
 }
+
+// Initial load
+loadMoreProducts(next_url);
