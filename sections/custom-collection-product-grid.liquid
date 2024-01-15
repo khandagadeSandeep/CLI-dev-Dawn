@@ -101,11 +101,11 @@
         {% endfor %}
       </ul>
       
-         {% if paginate.next.url !=blank %}
+        
       <div class="load-more">
         <a class="load-more_btn btn button" onclick="loadMoreProducts()" aria-label="{{ 'general.pagination.next' | t }}">Load More</a>
       </div>
-           {% endif %}
+         
          
     </div>
       {% endpaginate %}
