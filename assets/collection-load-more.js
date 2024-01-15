@@ -1,5 +1,6 @@
 var next_url = $(".products-on-page").data("next-url");
-// code for loading more products
+
+// Your existing code for loading more products
 function loadMoreProducts() {
   if (!next_url) {
     // No more products to load, hide the "Load More" button
@@ -25,7 +26,7 @@ function loadMoreProducts() {
   });
 }
 
-//  update the next_url 
+// Function to update the next_url and check "Load More" button visibility
 function updateNextUrl() {
   var new_products_on_page = $(".products-on-page");
   var new_next_url = new_products_on_page.data("next-url");
@@ -40,7 +41,7 @@ function updateNextUrl() {
   }
 }
 
-// code for filter changes
+// Add an event listener for filter changes
 $(document).on('change', '.filter-selector', function() {
   // Update the next_url and check "Load More" button visibility
   updateNextUrl();
