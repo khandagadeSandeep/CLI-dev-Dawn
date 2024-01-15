@@ -87,7 +87,7 @@
        {%- paginate collection.products by 20 -%}
 
          <div class="collection collection--empty page-width" id="product-grid" data-id="{{ section.id }}">   
-        <ul   {%- if paginate.next -%}data-next-url={{ paginate.next.url }}{% endif %} class="products-on-page Items">
+        <ul   {%- if paginate.next.url != blank -%}data-next-url={{ paginate.next.url }}{% endif %} class="products-on-page Items">
          {%- for product in collection.products -%}
           <li class="Item">
             <a href="{{ product.url }}" class="Item__link">
