@@ -61,6 +61,8 @@
 }
 
 </style>
+ {{ 'component-facets.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
  <facet-filters-form class="facets facets-vertical-sort page-width small-hide no-js-hidden">
       <form class="facets-vertical-form" id="FacetSortForm">
         <div class="facet-filters sorting caption">
