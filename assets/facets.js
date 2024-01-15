@@ -194,24 +194,12 @@ class FacetFiltersForm extends HTMLElement {
     }
   }
 
-// Inside the event handler for filter changes
-onActiveFilterClick(event) {
-  event.preventDefault();
-  FacetFiltersForm.toggleActiveFacets();
-  const url = event.currentTarget.href.indexOf('?') == -1 ? '' : event.currentTarget.href.slice(event.currentTarget.href.indexOf('?') + 1);
-  FacetFiltersForm.renderPage(url);
-
-  // Load more products with the updated next_url after rendering
-  loadMoreProducts(next_url, products_on_page)
-    .then(function() {
-      // Additional code to execute after loading more products
-    })
-    .catch(function(error) {
-      console.error("Error loading more products:", error);
-    });
-}
-
-
+  onActiveFilterClick(event) {
+    event.preventDefault();
+    FacetFiltersForm.toggleActiveFacets();
+    const url = event.currentTarget.href.indexOf('?') == -1 ? '' : event.currentTarget.href.slice(event.currentTarget.href.indexOf('?') + 1);
+    FacetFiltersForm.renderPage(url);
+  }
 }
 
 FacetFiltersForm.filterData = [];
