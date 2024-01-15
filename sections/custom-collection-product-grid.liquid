@@ -1,6 +1,8 @@
 
-<ul class="Items">
- {%- for product in collection.products -%}
+ <ul id="product-grid" data-id="{{ section.id }}" class="
+              grid product-grid grid--{{ section.settings.columns_mobile }}-col-tablet-down
+              grid--{{ section.settings.columns_desktop }}-col-desktop">
+              {%- for product in collection.products -%}
                 {% assign lazy_load = false %}
                 {%- if forloop.index > 2 -%}
                   {%- assign lazy_load = true -%}
@@ -19,8 +21,8 @@
                   %}
                 </li>
               {%- endfor -%}
-
-</ul>
+            </ul>
+    
 {% schema %}
 {
   "name": "custom product grid",
