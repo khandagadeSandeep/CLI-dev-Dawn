@@ -22,4 +22,7 @@ function loadMoreProducts() {
   }).done(function (next_page) {
     var new_products = $(next_page).find(".products-on-page");
     var new_url = new_products.data("next-url");
-    next
+    next_url = new_url;
+    $(".products-on-page").append(new_products.html());
+  });
+}
