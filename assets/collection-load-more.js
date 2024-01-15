@@ -26,13 +26,17 @@ function loadMoreProducts() {
   });
 }
 
-// Function to update the next_url and check "Load More" button visibility
+// Function to update the next_url
 function updateNextUrl() {
   var new_products_on_page = $(".products-on-page");
   var new_next_url = new_products_on_page.data("next-url");
   next_url = new_next_url;
-
   // Check if there's a next_url after filter update
+  checkLoadMoreVisibility();
+}
+
+// Function to check and hide the "Load More" button if no more products
+function checkLoadMoreVisibility() {
   if (!next_url) {
     // No more products to load, hide the "Load More" button
     $(".load-more").hide();
@@ -43,9 +47,9 @@ function updateNextUrl() {
 
 // Add an event listener for filter changes
 $(document).on('change', '.filter-selector', function() {
-  // Update the next_url and check "Load More" button visibility
+  // Update the next_url when filters are changed
   updateNextUrl();
 });
 
 // Initial check for "Load More" button visibility
-updateNextUrl();
+checkLoadMoreVisibility();
