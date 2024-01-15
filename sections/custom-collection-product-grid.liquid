@@ -91,7 +91,7 @@
          {%- for product in collection.products -%}
           <li class="Item">
             <a href="{{ product.url }}" class="Item__link">
-              <div class="ImageContainer">
+              <div {{ product.tags }} class="ImageContainer">
                 <img src="{{ product.featured_image | img_url : 'medium' }}" class="Image">
               </div>
               <div class="Item__title">{{ product.title }}</div>
