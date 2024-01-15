@@ -65,7 +65,7 @@ background #fff,
   <li class="Item">
     <a href="{{ product.url }}" class="Item__link">
       <div class="ImageContainer">
-        <img src="{{ product.featured_image | img_url : '300x300' }}" class="Image">
+        <img src="{{ product.featured_image | img_url : 'medium' }}" class="Image">
       </div>
       <div class="Item__title">{{ product.title }}</div>
       <div class="Item__price">{{ product.price }}</div>
