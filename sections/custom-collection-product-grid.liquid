@@ -1,3 +1,63 @@
+
+<main role="main">
+  <div class="collection">
+    <div class="filters">
+      <!-- Add your Shopify native filters here -->
+      {% for filter in collection.all_tags %}
+        <label>
+          <input type="checkbox" name="filter" value="{{ filter }}">
+          {{ filter }}
+        </label>
+      {% endfor %}
+    </div>
+
+    <div class="products" id="product-list">
+      <!-- Products will be loaded here -->
+    </div>
+
+    <div class="pagination">
+      <button id="load-more">Load More</button>
+    </div>
+  </div>
+</main>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    let page = 1;
+    const productsContainer = document.getElementById('product-list');
+    const loadMoreButton = document.getElementById('load-more');
+
+    function loadProducts() {
+      const url = `/collections/{{ collection.handle }}/products.json?page=${page}`;
+
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          const products = data.products;
+          if (products.length > 0) {
+            productsContainer.innerHTML += renderProducts(products);
+            page++;
+          } else {
+            loadMoreButton.disabled = true;
+          }
+        })
+        .catch(error => console.error('Error fetching products:', error));
+    }
+
+    function renderProducts(products) {
+      let html = '';
+      products.forEach(product => {
+        html += `<div class="product">${product.title}</div>`; // Customize based on your product data
+      });
+      return html;
+    }
+
+    loadMoreButton.addEventListener('click', loadProducts);
+
+    // Initial load
+    loadProducts();
+  });
+</script>
+
 {% schema %}
   {
     "name": "Section name",
