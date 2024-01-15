@@ -105,6 +105,11 @@
         </div>  
       </form>
     </facet-filters-form>
+
+    
+ {%- paginate collection.products by section.settings.products_per_page -%}
+
+            
 <ul class="Items">
  {%- for product in collection.products -%}
   <li class="Item">
@@ -119,6 +124,8 @@
 {% endfor %}
 
 </ul>
+
+{% endpaginate %}
 {% schema %}
 {
   "name": "custom product grid",
