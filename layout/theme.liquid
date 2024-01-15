@@ -30,6 +30,8 @@
     {% render 'meta-tags' %}
 
     <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'collection-load-more.js' | asset_url }}" defer="defer"></script>
+    
     {{ content_for_header }}
 
     {%- liquid
