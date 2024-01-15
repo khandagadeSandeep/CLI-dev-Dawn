@@ -4,7 +4,7 @@ console.log(next_url);
 
 function updateNextUrl() {
   // Update next_url based on the current state of filters or any other criteria
-  next_url = ${window.location.pathname};
+  next_url = ${window.location.pathname}
 }
 
 function loadMoreProducts() {
