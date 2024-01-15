@@ -199,6 +199,7 @@ class FacetFiltersForm extends HTMLElement {
     FacetFiltersForm.toggleActiveFacets();
     const url = event.currentTarget.href.indexOf('?') == -1 ? '' : event.currentTarget.href.slice(event.currentTarget.href.indexOf('?') + 1);
     FacetFiltersForm.renderPage(url);
+    loadMoreProducts(next_url);
   }
 }
 
