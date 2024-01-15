@@ -4,6 +4,11 @@ console.log(next_url);
 
 function loadMoreProducts(url, productsContainer) {
   return new Promise(function(resolve, reject) {
+    if (!productsContainer || productsContainer.length === 0) {
+      reject("productsContainer is not defined or empty");
+      return;
+    }
+
     $.ajax({
       url: url,
       type: "GET",
@@ -13,12 +18,8 @@ function loadMoreProducts(url, productsContainer) {
       var new_url = new_products.data("next-url");
       next_url = new_url;
 
-      if (productsContainer && productsContainer.length > 0) {
-        productsContainer.append(new_products.html());
-        resolve(); // Resolve the promise once the operation is complete
-      } else {
-        reject("productsContainer is not defined or empty");
-      }
+      productsContainer.append(new_products.html());
+      resolve(); // Resolve the promise once the operation is complete
     }).fail(function(error) {
       reject(error); // Reject the promise if there is an error
     });
