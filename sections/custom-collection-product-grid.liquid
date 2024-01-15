@@ -1,77 +1,78 @@
-{{ 'template-collection.css' | asset_url | stylesheet_tag }}
-{{ 'component-loading-overlay.css' | asset_url | stylesheet_tag }}
-{{ 'component-card.css' | asset_url | stylesheet_tag }}
-{{ 'component-price.css' | asset_url | stylesheet_tag }}
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+ <script src="{{ 'collection-load-more.js' | asset_url }}" defer="defer"></script>
+<style>
+  .Items {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
-<link rel="preload" href="{{ 'component-rte.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-
-{%- if section.settings.enable_quick_add -%}
-  <link rel="stylesheet" href="{{ 'quick-add.css' | asset_url }}" media="print" onload="this.media='all'">
-  <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
-  <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
-{%- endif -%}
-<noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
-
-{%- style -%}
-  .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+.Item {
+  padding: 20px 0;
+  width: 24%;
+  transition: box-shadow, 0.4s, ease-in-out;
+  border-radius: 3px;
+  list-style: none;
+}
+  .load-more {
+    text-align: center;
+    margin: 25px auto;
+}
+  a.load-more_btn.btn.button {
+    cursor: pointer;
+}
+@media (max-width: 1050px) {
+  background #fff,
+  .Item {
+    width: 48%;
   }
-
-  @media screen and (min-width: 750px) {
-    .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
-    }
+}
+@media (max-width: 600px) {
+  background #fff,
+  .Item {
+    width: 100%;
   }
-{%- endstyle -%}
+}
+:not(:last-child) {
+  margin-bottom: 10px;
+}
+.Item__link {
+  text-decoration: none;
+}
+.Item__title {
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9em;
+  color: #555;
+  width: 90%;
+  margin: 20px auto 0;
+}
+.Item__price {
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9em;
+  margin-top: 10px;
+  color: #777;
+}
+.ImageContainer {
+  width: 100%;
+  height: auto;
+}
+.Image {
+ width: 300px;
+    height: 300px;
+    object-fit: scale-down;
+    object-position: center;
+}
 
+</style>
 <div class="section-{{ section.id }}-padding">
   {% comment %} Sort is the first tabbable element when filter type is vertical {% endcomment %}
-  {%- if section.settings.enable_sorting and section.settings.filter_type == 'vertical' -%}
-    <facet-filters-form class="1facets 1facets-vertical-sort page-width small-hide no-js-hidden">
-      <form class="facets-vertical-form" id="1FacetSortForm">
-        <div class="facet-filters sorting caption">
-          <div class="facet-filters__field">
-            <h2 class="facet-filters__label caption-large text-body">
-              <label for="SortBy">{{ 'products.facets.sort_by_label' | t }}</label>
-            </h2>
-            <div class="select">
-              {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
-              <select name="sort_by" class="facet-filters__sort select__select caption-large" id="SortBy" aria-describedby="a11y-refresh-page-message">
-                {%- for option in collection.sort_options -%}
-                  <option value="{{ option.value | escape }}"{% if option.value == sort_by %} selected="selected"{% endif %}>{{ option.name | escape }}</option>
-                {%- endfor -%}
-              </select>
-              {% render 'icon-caret' %}
-            </div>
-          </div>
-          <noscript>
-            <button type="submit" class="facets__button-no-js button button--secondary">{{ 'products.facets.sort_button' | t }}</button>
-          </noscript>
-        </div>
-
-        <div class="product-count-vertical light" role="status">
-          <h2 class="product-count__text text-body">
-            <span id="ProductCountDesktop">
-              {%- if collection.results_count -%}
-                {{ 'templates.search.results_with_count' | t: terms: collection.terms, count: collection.results_count }}
-              {%- elsif collection.products_count == collection.all_products_count -%}
-                {{ 'products.facets.product_count_simple' | t: count: collection.products_count }}
-              {%- else -%}
-                {{ 'products.facets.product_count' | t: product_count: collection.products_count, count: collection.all_products_count }}
-              {%- endif -%}
-            </span>
-          </h2>
-          <div class="loading-overlay__spinner">
-            <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-              <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
-            </svg>
-          </div>
-        </div>  
-      </form>
-    </facet-filters-form>
-  {%- endif -%}
+  
 
   <div class="{% if section.settings.filter_type == 'vertical' %} facets-vertical page-width{% endif %}">
     {{ 'component-facets.css' | asset_url | stylesheet_tag }}
