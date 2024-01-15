@@ -84,7 +84,7 @@
     {%- endif -%}
 
     <div class="product-grid-container{% if section.settings.filter_type == 'vertical' and section.settings.collapse_on_larger_devices %} product-grid-container-vertical{% endif %}" id="ProductGridContainer">
-       {%- paginate collection.products by 24 -%}
+       {%- paginate collection.products by 8 -%}
 
          <div class="collection collection--empty page-width" id="product-grid" data-id="{{ section.id }}">   
         <ul data-next-url="{{ paginate.next.url }}" class="products-on-page Items">
