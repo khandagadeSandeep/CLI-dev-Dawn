@@ -8,13 +8,9 @@ function loadMoreProducts() {
     type: "GET",
     dataType: "html",
   }).done(function (next_page) {
-    var new_products = $(next_page).find("#product-grid");
+    var new_products = $(next_page).find(".products-on-page");
     var new_url = new_products.data("next-url");
     next_url = new_url;
-
-    products_on_page.append(new_products.find(".Items").html());
-    products_on_page.data("next-url", new_url);
+    products_on_page.append(new_products.html());
   });
 }
-
-
