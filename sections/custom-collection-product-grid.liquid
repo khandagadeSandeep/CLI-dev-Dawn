@@ -102,7 +102,15 @@
       <div class="load-more">
         <a class="load-more_btn btn button" onclick="loadMoreProducts()" aria-label="{{ 'general.pagination.next' | t }}">Load More</a>
       </div>
- 
+        <ul class="pagination__list list-unstyled" role="list">
+            {%- if paginate.next -%}
+                  <li>
+                    <a href="{{ paginate.next.url }}{{ anchor }}" class="pagination__item pagination__item--prev pagination__item-arrow link motion-reduce" aria-label="{{ 'general.pagination.next' | t }}" >
+                      {%- render 'icon-caret' -%}
+                    </a>
+                  </li>
+                {%- endif -%}
+        </ul>
          </div>
       {% endpaginate %}
     </div>
