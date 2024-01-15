@@ -15,6 +15,12 @@ function updateNextUrl() {
 
 // Your existing code for loading more products
 function loadMoreProducts() {
+  if (!next_url) {
+    // No more products to load, hide the "Load More" button
+    $(".load-more").hide();
+    return;
+  }
+
   $.ajax({
     url: next_url,
     type: "GET",
@@ -22,6 +28,12 @@ function loadMoreProducts() {
   }).done(function (next_page) {
     var new_products = $(next_page).find(".products-on-page");
     var new_url = new_products.data("next-url");
+    
+    if (!new_url) {
+      // No more products to load, hide the "Load More" button
+      $(".load-more").hide();
+    }
+
     next_url = new_url;
     $(".products-on-page").append(new_products.html());
   });
