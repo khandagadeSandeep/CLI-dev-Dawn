@@ -110,7 +110,7 @@
  {%- paginate collection.products by 8 -%}
 
             
-<ul class="products-on-page Items">
+<ul data-next-url={{ paginate.next.url }} class="products-on-page Items">
  {%- for product in collection.products -%}
   <li class="Item">
     <a href="{{ product.url }}" class="Item__link">
