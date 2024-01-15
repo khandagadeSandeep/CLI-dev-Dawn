@@ -1,16 +1,24 @@
 
 <ul class="Items">
  {%- for product in collection.products -%}
-  <li class="Item">
-    <a href="https://www.shore.co.uk/index.php/ripcurl-corp-tee-black.html" class="Item__link">
-      <div class="ImageContainer">
-        <img src="https://www.shore.co.uk/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/C/T/CTESI4RPa.jpg" alt="Ripcurl Corp Tee Black" class="Image">
-      </div>
-      <div class="Item__title">Ripcurl Corp Tee Black</div>
-      <div class="Item__price">€ 20.87</div>
-    </a>
-  </li>
-{% endfor %}
+                {% assign lazy_load = false %}
+                {%- if forloop.index > 2 -%}
+                  {%- assign lazy_load = true -%}
+                {%- endif -%}
+                <li class="grid__item">
+                  {% render 'card-product',
+                    card_product: product,
+                    media_aspect_ratio: section.settings.image_ratio,
+                    show_secondary_image: section.settings.show_secondary_image,
+                    show_vendor: section.settings.show_vendor,
+                    show_rating: section.settings.show_rating,
+                    lazy_load: lazy_load,
+                    show_quick_add: section.settings.enable_quick_add,
+                    section_id: section.id
+
+                  %}
+                </li>
+              {%- endfor -%}
 
 </ul>
 {% schema %}
