@@ -85,25 +85,25 @@
     <div class="product-grid-container{% if section.settings.filter_type == 'vertical' and section.settings.collapse_on_larger_devices %} product-grid-container-vertical{% endif %}" id="ProductGridContainer">
        {%- paginate collection.products by 8 -%}
 
-            
-<ul data-next-url={{ paginate.next.url }} class="products-on-page Items">
- {%- for product in collection.products -%}
-  <li class="Item">
-    <a href="{{ product.url }}" class="Item__link">
-      <div class="ImageContainer">
-        <img src="{{ product.featured_image | img_url : 'medium' }}" class="Image">
+         <div class="collection collection--empty page-width" id="product-grid" data-id="{{ section.id }}">   
+        <ul data-next-url={{ paginate.next.url }} class="products-on-page Items">
+         {%- for product in collection.products -%}
+          <li class="Item">
+            <a href="{{ product.url }}" class="Item__link">
+              <div class="ImageContainer">
+                <img src="{{ product.featured_image | img_url : 'medium' }}" class="Image">
+              </div>
+              <div class="Item__title">{{ product.title }}</div>
+              <div class="Item__price">{{ product.price }}</div>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+      <div class="load-more">
+        <a class="load-more_btn btn button" onclick="loadMoreProducts()">Load More</a>
       </div>
-      <div class="Item__title">{{ product.title }}</div>
-      <div class="Item__price">{{ product.price }}</div>
-    </a>
-  </li>
-{% endfor %}
-
-</ul>
-<div class="load-more">
-  <a class="load-more_btn btn button" onclick="loadMoreProducts()">Load More</a>
-</div>
-{% endpaginate %}
+         </div>
+      {% endpaginate %}
     </div>
   </div>
 </div>
