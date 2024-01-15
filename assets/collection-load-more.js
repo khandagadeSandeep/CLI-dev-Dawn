@@ -1,15 +1,16 @@
+var next_url = $(".products-on-page").data("next-url");
+var loadedProducts = [];
+
 // Your existing code for loading more products
 function loadMoreProducts() {
-  var currentNextUrl = $(".products-on-page").data("next-url");
-
-  if (!currentNextUrl) {
+  if (!next_url) {
     // No more products to load, hide the "Load More" button
     $(".load-more").hide();
     return;
   }
 
   $.ajax({
-    url: currentNextUrl,
+    url: next_url,
     type: "GET",
     dataType: "html",
   }).done(function (next_page) {
@@ -21,7 +22,19 @@ function loadMoreProducts() {
       $(".load-more").hide();
     }
 
-    $(".products-on-page").append(new_products.html());
+    // Filter out already loaded products
+    new_products = new_products.filter(function() {
+      return loadedProducts.indexOf($(this).data("product-id")) === -1;
+    });
+
+    loadedProducts = loadedProducts.concat(
+      new_products.map(function() {
+        return $(this).data("product-id");
+      }).get()
+    );
+
+    $(".products-on-page").append(new_products);
+    next_url = new_url;
   });
 }
 
