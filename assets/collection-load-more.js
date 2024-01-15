@@ -1,3 +1,5 @@
+var next_url = $(".products-on-page").data("next-url");
+
 // Add an event listener for filter changes
 $(document).on('change', '.filter-selector', function() {
   // Update the next_url when filters are changed
@@ -20,7 +22,4 @@ function loadMoreProducts() {
   }).done(function (next_page) {
     var new_products = $(next_page).find(".products-on-page");
     var new_url = new_products.data("next-url");
-    next_url = new_url;
-    products_on_page.append(new_products.html());
-  });
-}
+    next
