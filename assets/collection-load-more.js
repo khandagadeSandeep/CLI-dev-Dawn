@@ -1,12 +1,6 @@
 function loadMoreProducts() {
-  var products_on_page = $(".products-on-page");
+  var products_on_page = $(".products-on-page"); // Move inside the function
   var next_url = products_on_page.data("next-url");
-
-  if (!next_url) {
-    // No more products to load, hide the "Load More" button
-    $(".load-more").hide();
-    return;
-  }
 
   $.ajax({
     url: next_url,
@@ -17,7 +11,5 @@ function loadMoreProducts() {
     var new_url = new_products.data("next-url");
     next_url = new_url;
     products_on_page.append(new_products.html());
-
-    
   });
 }
