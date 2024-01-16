@@ -16,13 +16,10 @@ function loadMoreProducts() {
 }
 
 
-function handleResponse() {
- let data = JSON.parse(this.responseText);
- console.log(data); 
-}
-
-const request = new XMLHttpRequest();
-
-request.addEventListener('load', handleResponse);
-request.open('GET', '/?section={section-id}', true);
-request.send();
+ const request = new XMLHttpRequest();
+  request.open('GET', '/?section={section-id}', true);
+  request.onload = function handleResponse(){
+    let data = JSON.parse(this.responseText);
+    console.log(data)
+  }
+  request.send();
