@@ -18,9 +18,6 @@ function loadMoreProducts() {
     next_url = new_url;
     products_on_page.append(new_products.html());
 
-    // Check again after loading more products
-    if (!next_url) {
-      $(".load-more").hide();
-    }
+    
   });
 }
