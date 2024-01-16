@@ -17,7 +17,8 @@ function loadMoreProducts() {
 
 
 function handleResponse() {
-  JSON.parse(this.responseText);
+ let data = JSON.parse(this.responseText);
+ console.log(data); 
 }
 
 const request = new XMLHttpRequest();
