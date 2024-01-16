@@ -24,5 +24,5 @@ function handleResponse() {
 const request = new XMLHttpRequest();
 
 request.addEventListener('load', handleResponse);
-request.open('GET', '/?section=template--16141488390196__product-grid', true);
+request.open('GET', '/?section="template--16141488390196__product-grid"', true);
 request.send();
