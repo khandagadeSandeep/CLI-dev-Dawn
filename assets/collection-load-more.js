@@ -14,14 +14,6 @@ function loadMoreProducts() {
     products_on_page.append(new_products.html());
   });
 
-
-  const request = new XMLHttpRequest();
-  request.open('GET', '/?sections={section-id}', true);
-  request.onload = function handleResponse(){
-    let data = JSON.parse(this.responseText);
-    console.log(data)
-  }
-  request.send();
 }
 
 
