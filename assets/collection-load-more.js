@@ -16,7 +16,7 @@ function loadMoreProducts() {
 
 
   const request = new XMLHttpRequest();
-  request.open('GET', '/?section_id={section-id}', true);
+  request.open('GET', '/?sections={section-id}', true);
   request.onload = function handleResponse(){
     let data = JSON.parse(this.responseText);
     console.log(data)
