@@ -14,3 +14,14 @@ function loadMoreProducts() {
     products_on_page.append(new_products.html());
   });
 }
+
+
+function handleResponse() {
+  JSON.parse(this.responseText);
+}
+
+const request = new XMLHttpRequest();
+
+request.addEventListener('load', handleResponse);
+request.open('GET', '/?section={{section.id}}', true);
+request.send();
