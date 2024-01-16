@@ -16,7 +16,7 @@ function loadMoreProducts() {
 
 
   const request = new XMLHttpRequest();
-  request.open('GET', '/?section={section-id}', true);
+  request.open('GET', '/?section=template--16141488390196__product-grid', true);
   request.onload = function handleResponse(){
     let data = JSON.parse(this.responseText);
     console.log(data)
