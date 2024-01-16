@@ -1,6 +1,11 @@
+var next_url = $(".products-on-page").data("next-url");
+
 function loadMoreProducts() {
-  var products_on_page = $(".products-on-page"); // Move inside the function
-  var next_url = products_on_page.data("next-url");
+  if (!next_url) {
+    // No more products to load, hide the "Load More" button
+    $(".load-more").hide();
+    return;
+  }
 
   $.ajax({
     url: next_url,
@@ -8,8 +13,12 @@ function loadMoreProducts() {
     dataType: "html",
   }).done(function (next_page) {
     var new_products = $(next_page).find(".products-on-page");
-    var new_url = new_products.data("next-url");
-    next_url = new_url;
-    products_on_page.append(new_products.html());
+    next_url = new_products.data("next-url");
+    $(".products-on-page").append(new_products.html());
+
+    // Check again after loading more products
+    if (!next_url) {
+      $(".load-more").hide();
+    }
   });
 }
