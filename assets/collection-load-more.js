@@ -28,5 +28,5 @@ function handleResponse() {
 const request = new XMLHttpRequest();
 
 request.addEventListener('load', handleResponse);
-request.open('GET', '?section_id={secId}', true);
+request.open('GET', `?section_id={secId}`, true);
 request.send();
