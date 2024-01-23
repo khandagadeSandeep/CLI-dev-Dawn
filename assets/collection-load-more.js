@@ -31,5 +31,5 @@ var id = section.dataset.id;
 const request = new XMLHttpRequest();
 
 request.addEventListener('load', handleResponse);
-request.open('GET', `?section_id=${id}`, true);
+request.open('GET', `?section_id=${secId}`, true);
 request.send();
