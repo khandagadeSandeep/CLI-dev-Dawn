@@ -75,7 +75,7 @@
 }
 
 </style>
-<div class="section-{{ section.id }}-padding"  data-section-id="{{ section.id }}" data-section-type="section-type">
+<div class="section-{{ section.id }}-padding custom_sec"  data-section-id="{{ section.id }}">
   <div class="{% if section.settings.filter_type == 'vertical' %} facets-vertical page-width{% endif %}">
     {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
       <aside aria-labelledby="verticalTitle" class="facets-wrapper{% unless section.settings.enable_filtering %} facets-wrapper--no-filters{% endunless %}{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}" id="main-collection-filters" data-id="{{ section.id }}">
