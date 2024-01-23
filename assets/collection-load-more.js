@@ -4,7 +4,7 @@ var next_url = products_on_page.data("next-url");
 console.log(next_url);
 $("body").click(function(){
  next_url = $(location).attr('href');
-
+console.log("next", next_url);
 });
 function loadMoreProducts() {
   $.ajax({
