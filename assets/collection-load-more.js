@@ -1,9 +1,9 @@
 var products_on_page = $(".products-on-page");
 var next_url = products_on_page.data("next-url");
-var product_sec = $('.products_on_page');
+var product_sec = $('.custom_sec');
 var secId = product_sec.data("section-id");
 
-console.log("section Id" , product_sec);
+console.log("section Id" , secId);
 
 function loadMoreProducts() {
   $.ajax({
