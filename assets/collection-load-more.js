@@ -21,9 +21,10 @@ function loadMoreProducts() {
 function handleResponse() {
   JSON.parse(this.responseText);
 }
-
+var section = document.querySelector('[data-section-type="section-type"]')
+var id = section.dataset.id
 const request = new XMLHttpRequest();
 
 request.addEventListener('load', handleResponse);
-request.open('GET', '/?sections=main-password-header,sections--1234__header', true);
+request.open('GET', `?section_id=${id}`, true);
 request.send();
