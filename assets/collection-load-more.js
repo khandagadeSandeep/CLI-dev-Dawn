@@ -15,6 +15,15 @@ function loadMoreProducts() {
     if (next_url === '') {
  $('.load-more').css("display","none");
 } 
-  });
-  
+  });  
 }
+
+function handleResponse() {
+  JSON.parse(this.responseText);
+}
+
+const request = new XMLHttpRequest();
+
+request.addEventListener('load', handleResponse);
+request.open('GET', '/?sections=main-password-header,sections--1234__header', true);
+request.send();
