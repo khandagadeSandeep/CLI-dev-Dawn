@@ -20,6 +20,7 @@ function loadMoreProducts() {
 
 function handleResponse() {
   JSON.parse(this.responseText);
+  console.log(data , "sectionData");
 }
 var section = document.querySelector('[data-section-type="section-type"]')
 var id = section.dataset.id
