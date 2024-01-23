@@ -3,7 +3,7 @@ var next_url = products_on_page.data("next-url");
 var product_sec = $('.products_on_page');
 var secId = product_sec.data("section-id");
 
-console.log("section Id" , secId);
+console.log("section Id" , product_sec);
 
 function loadMoreProducts() {
   $.ajax({
