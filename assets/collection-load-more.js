@@ -12,5 +12,9 @@ function loadMoreProducts() {
     var new_url = new_products.data("next-url");
     next_url = new_url;
     products_on_page.append(new_products.html());
+    if (next_url === '') {
+ $('.load-more').css("display","none");
+} 
   });
+  
 }
