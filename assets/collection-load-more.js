@@ -22,8 +22,8 @@ function handleResponse() {
   JSON.parse(this.responseText);
   console.log(data , "sectionData");
 }
-var section = document.querySelector('[data-section-type="section-type"]')
-var id = section.dataset.id
+var section = document.querySelector('[data-section-type="section-type"]');
+var id = section.dataset.id;
 const request = new XMLHttpRequest();
 
 request.addEventListener('load', handleResponse);
